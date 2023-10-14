@@ -38,6 +38,7 @@ class CustomerController extends Controller
         $customer->name = $request["name"];
         $customer->email = $request["email"];
         $customer->occupation = $request["occupation"];
+        $customer->save();
 
         return view('view_customer', ['customer' => $customer]);
     }
