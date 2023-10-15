@@ -120,8 +120,13 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         //
+        $customer = Customer::find($id);
+
+        $customer->delete();
+
+        return "Berhasil Di Delete";
     }
 }
