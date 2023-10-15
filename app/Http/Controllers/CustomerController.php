@@ -43,6 +43,14 @@ class CustomerController extends Controller
         return view('view_customer', ['customer' => $customer]);
     }
 
+
+    public function get()
+    {
+        $all_customer = Customer::all();
+
+        return view ('all_customer', ['all_customer' => $all_customer]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -74,6 +82,24 @@ class CustomerController extends Controller
     public function edit($id)
     {
         //
+        
+        $customer = Customer::find($id);
+
+        return view('edit_customer', ['customer' => $customer]);
+    }
+
+
+    public function edit_post(Request $request)
+    {
+        $customer = Customer::find($request["id"]);
+        
+        $customer->name = $request["name"];
+        $customer->email = $request["email"];
+        $customer->occupation = $request["occupation"];
+        $customer->save();
+
+        return view('view_customer', ['customer' => $customer]);
+
     }
 
     /**
